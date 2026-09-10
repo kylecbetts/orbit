@@ -1,0 +1,27 @@
+# dependencies
+node_modules/
+
+# build output
+dist/
+build/
+*.tsbuildinfo
+
+# env
+.env
+.env.*
+!.env.example
+
+# logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+
+# tooling
+.vite/
+coverage/
+
+# macOS
+.DS_Store
+
+# pnpm store (sandbox forced it local)
+.pnpm-store/

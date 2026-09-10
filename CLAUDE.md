@@ -17,46 +17,51 @@ starting any other domain.
 
 ## Stack
 
-| Layer | Choice |
-|---|---|
-| Language | TypeScript everywhere |
-| Web | Vite · React · TanStack Router/Query · shadcn/ui · Tailwind · `vite-plugin-pwa` |
-| API | Hono |
-| DB | Postgres · Drizzle |
-| AI | LLM behind a provider-agnostic interface |
-| Host | Raspberry Pi 5 · Docker Compose · Caddy · Tailscale |
-| Domain | `*.kylebetts.net` — Cloudflare DNS, wildcard cert via DNS-01 |
+| Layer    | Choice                                                                          |
+| -------- | ------------------------------------------------------------------------------- |
+| Language | TypeScript everywhere                                                           |
+| Web      | Vite · React · TanStack Router/Query · shadcn/ui · Tailwind · `vite-plugin-pwa` |
+| API      | Hono                                                                            |
+| DB       | Postgres · Drizzle                                                              |
+| AI       | LLM behind a provider-agnostic interface                                        |
+| Host     | Raspberry Pi 5 · Docker Compose · Caddy · Tailscale                             |
+| Domain   | `*.kylebetts.net` — Cloudflare DNS, wildcard cert via DNS-01                    |
 
 ## Hard rules
 
-| Rule | Why | Enforced |
-|---|---|---|
-| One agent holding all tools — no per-domain agents behind an orchestrator | Subagent summaries destroy cross-domain insight | Review |
-| Agent runs are rows in a table, not request handlers | Scheduled AI later is a cron entry, not a refactor | Review |
-| AI writes are proposals until confirmed | It writes to money and health data | Review |
-| Plain Docker + plain Postgres — no edge runtimes, no platform SDKs | Pi → VPS stays a weekend | Review |
-| No auth code | Tailscale is the authentication boundary | — |
-| No multi-tenancy — no `user_id`, orgs, or roles | One user, forever | — |
+| Rule                                                                      | Why                                                | Enforced |
+| ------------------------------------------------------------------------- | -------------------------------------------------- | -------- |
+| One agent holding all tools — no per-domain agents behind an orchestrator | Subagent summaries destroy cross-domain insight    | Review   |
+| Agent runs are rows in a table, not request handlers                      | Scheduled AI later is a cron entry, not a refactor | Review   |
+| AI writes are proposals until confirmed                                   | It writes to money and health data                 | Review   |
+| Plain Docker + plain Postgres — no edge runtimes, no platform SDKs        | Pi → VPS stays a weekend                           | Review   |
+| No auth code                                                              | Tailscale is the authentication boundary           | —        |
+| No multi-tenancy — no `user_id`, orgs, or roles                           | One user, forever                                  | —        |
 
 ## Layout
 
+pnpm workspaces. Two packages: `@orbit/api`, `@orbit/web`.
+
 ```
-src/
-  domains/<domain>/   one directory per domain — see docs/conventions.md
-  shared/             links (cross-domain relations), events (activity log)
-  ai/                 agent runner, tool registry, providers/
-  db/                 Drizzle client + migrations
-  server.ts
-web/                  Vite React PWA
-docs/                 conventions, decisions
+api/                    Hono server
+  src/
+    domains/<domain>/   one directory per domain — see docs/conventions.md
+    shared/             links (cross-domain relations), events (activity log)
+    ai/                 agent runner, tool registry, providers/
+    db/                 Drizzle client
+    index.ts
+  drizzle/              generated migrations
+web/                    Vite React PWA
+docs/                   conventions, decisions
+docker-compose.yml      local Postgres
 ```
 
 ## Reference
 
-| File | Contents |
-|---|---|
+| File                  | Contents                                     |
+| --------------------- | -------------------------------------------- |
 | `docs/conventions.md` | Domain module shape, commits, migrations, UI |
-| `docs/decisions.md` | What was chosen, what was rejected, why |
+| `docs/decisions.md`   | What was chosen, what was rejected, why      |
 
 ## Priority
 

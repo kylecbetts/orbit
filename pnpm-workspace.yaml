@@ -1,0 +1,8 @@
+packages:
+  - api
+  - web
+
+# esbuild ships its platform binary via optionalDependencies; its postinstall is
+# only a verification step. Allowed so pnpm stops erroring on ignored builds.
+allowBuilds:
+  esbuild: true
