@@ -2,10 +2,11 @@
 
 ## Domain module
 
-Every domain is the same six files. Copy an existing domain; don't invent a shape.
+Every domain is the same seven files. Copy an existing domain; don't invent a shape.
 
 ```
 api/src/domains/<domain>/
+  domain.md    Overview, glossary, invariants, events — the durable model
   schema.ts    Drizzle tables
   types.ts     Zod schemas — source of truth for this domain's shapes
   service.ts   Business logic; the only file that touches the database
@@ -42,6 +43,19 @@ api/src/domains/<domain>/
 | Components | shadcn/ui is copied into the repo. Edit freely; there is no upstream to track.                    |
 | Mobile     | Defaults read desktop-first. Size touch targets deliberately; prefer `vaul` drawers over dialogs. |
 | State      | Server state via TanStack Query. Treat the client as a cache — iOS may evict PWA storage.         |
+
+## Building a feature
+
+| Stage             | Artifact                                           | Lifespan       |
+| ----------------- | -------------------------------------------------- | -------------- |
+| Define the domain | `domains/<domain>/domain.md`                       | Durable        |
+| Spec the feature  | `docs/specs/<feature>.md` — UX intent + UI mockups | Delete on ship |
+| Plan              | Technical plan, agreed before code                 | Disposable     |
+| Build             | —                                                  | —              |
+
+> Specs are scaffolding. On ship, promote anything durable — invariants to
+> `domain.md`, rationale to `decisions.md` — then delete the spec. Git history
+> keeps it recoverable, so nothing is lost and no half-true documents accumulate.
 
 ## Documentation
 
