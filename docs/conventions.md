@@ -46,15 +46,24 @@ api/src/domains/<domain>/
 
 ## Building a feature
 
-| Stage             | Artifact                                           | Lifespan       |
-| ----------------- | -------------------------------------------------- | -------------- |
-| Define the domain | `domains/<domain>/domain.md`                       | Durable        |
-| Spec the feature  | `docs/specs/<feature>.md` — UX intent + UI mockups | Delete on ship |
-| Plan              | Technical plan, agreed before code                 | Disposable     |
-| Build             | —                                                  | —              |
+Each feature gets a folder, `docs/features/<feature>/`, where the short kebab slug
+is the feature's ID. The files carry a feature across sessions — a new session
+starts from them, not from memory.
 
-> Specs are scaffolding. On ship, promote anything durable — invariants to
-> `domain.md`, rationale to `decisions.md` — then delete the spec. Git history
+| Stage             | Artifact                     | Contents                                                                    |
+| ----------------- | ---------------------------- | --------------------------------------------------------------------------- |
+| Define the domain | `domains/<domain>/domain.md` | Durable model — outlives every feature                                      |
+| Intent            | `intent.md`                  | A few lines of purpose. Quick enough that it never delays capturing an idea |
+| Spec              | `spec.md`                    | UI and UX workflows, mockups, scope, what done looks like, open questions   |
+| Plan              | `plan.md`                    | Technical plan, agreed before code                                          |
+| Build             | —                            | —                                                                           |
+
+**Keep features small.** The first step from intent to spec is deciding whether
+the feature should be split. If it should, each part gets its own folder and
+intent before any spec is written.
+
+> Feature folders are scaffolding. On ship, promote anything durable — invariants
+> to `domain.md`, rationale to `decisions.md` — then delete the folder. Git history
 > keeps it recoverable, so nothing is lost and no half-true documents accumulate.
 
 ## Documentation

@@ -13,7 +13,7 @@ scaffolded. Tasks domain modelled in `api/src/domains/tasks/domain.md`.
 
 **Now:** ship Tasks end-to-end — schema → API → PWA → one AI tool — before
 starting any other domain. First slice: one-off tasks, capture → Today → done.
-Spec it next.
+Intent written at `docs/features/one-off-tasks/intent.md` — spec it next.
 
 > Transient section. Edit it; don't let it accumulate.
 
