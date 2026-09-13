@@ -9,13 +9,13 @@ The thing you do is separate from the schedule it repeats on.
 
 | Concept        | What it is                                                                                  |
 | -------------- | ------------------------------------------------------------------------------------------- |
-| **Task**       | The thing you do. Title, notes, chore flag, context, project, dates, resolution.            |
+| **Task**       | The thing you do. Title, notes, chore flag, `is_work`, project, dates, resolution.          |
 | **Recurrence** | An optional rule that issues tasks — anchor, schedule, whether late counts, the habit flag. |
 | **Highlight**  | The one thing chosen for a day. Free text, or a link to a task planned for that day.        |
 
 A one-off is a task with no recurrence, and that is the common case. A recurrence
 holds only the rule — no title, no template. When its open task resolves, the next
-task is issued as a copy of that one: title, notes, chore flag, context, project. So
+task is issued as a copy of that one: title, notes, chore flag, `is_work`, project. So
 there is one place to edit. Changing the current task changes every task issued
 after it, while tasks already resolved keep what they were called when they were
 done.
@@ -143,10 +143,12 @@ in the app.
 > 03:00 also sits outside the US DST transition window at 02:00, so the boundary
 > never lands in a skipped or doubled hour.
 
-## Context and projects
+## Work and projects
 
-Every task is `personal` or `work`. Projects are optional groupings that carry a
-context; a task's context matches its project's when it has one.
+`is_work` marks a task as work; everything else is personal. Two values, forever —
+a third sphere of life would be a migration, and that is accepted. Projects are
+optional groupings that carry the same flag; a task's `is_work` matches its
+project's when it has one.
 
 Work items are pointers, not a mirror of a team board. A task may carry an external
 reference — a Jira or Linear key and URL — rendered as a link and nothing more.
