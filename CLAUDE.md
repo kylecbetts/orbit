@@ -8,10 +8,12 @@ later. Cross-domain intelligence is the point: one database, one agent.
 
 ## Status
 
-Greenfield. Only this file exists.
+Scaffolded: pnpm workspace, Hono api, local Postgres, CI checks. `web/` not yet
+scaffolded. Tasks domain modelled in `api/src/domains/tasks/domain.md`.
 
 **Now:** ship Tasks end-to-end — schema → API → PWA → one AI tool — before
-starting any other domain.
+starting any other domain. First slice: one-off tasks, capture → Today → done.
+Spec it next.
 
 > Transient section. Edit it; don't let it accumulate.
 
