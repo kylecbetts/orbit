@@ -12,8 +12,9 @@ Scaffolded: pnpm workspace, Hono api, local Postgres, CI checks. `web/` not yet
 scaffolded. Tasks domain modelled in `api/src/domains/tasks/domain.md`.
 
 **Now:** ship Tasks end-to-end — schema → API → PWA → one AI tool — before
-starting any other domain. First slice: one-off tasks, capture → Today → done.
-Intent written at `docs/features/one-off-tasks/intent.md` — spec it next.
+starting any other domain. Three features, in order: `web-scaffold` →
+`one-off-tasks` → `pi-deploy`. Intents for all three are in `docs/features/`.
+Next: spec `web-scaffold`.
 
 > Transient section. Edit it; don't let it accumulate.
 

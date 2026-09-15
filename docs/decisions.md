@@ -44,6 +44,9 @@ unclean-shutdown corruption risk, which is the main hazard backups don't prevent
 Power the router from the same UPS, or the Pi staying up buys nothing. Not yet
 purchased.
 
+_2026-09-14_ — Resolved. UPS bought; NUT-driven shutdown on low battery is part
+of `pi-deploy`.
+
 **Revisit if:** uptime becomes annoying. Migration is `compose up` plus a
 `pg_dump` restore.
 
